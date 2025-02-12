@@ -22,6 +22,8 @@ Run the tracks.py script:
 
 By default the script will run on `http://localhost:3000`
 
+Insert song files into the /songs directory to use them with the scripts.
+
 You can use the following provided cURL commands to add, remove, list and identify tracks.
 
 #### Insert a track

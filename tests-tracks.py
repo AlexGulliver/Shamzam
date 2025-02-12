@@ -85,7 +85,9 @@ class Testing(unittest.TestCase):
                 json_response["message"], "Track already present in database."
                 )
         else:
-            self.assertIn(response.status_code, [201, 400, 409, 500], f"Unexpected status code: {response.status_code}")
+            self.assertIn(
+                response.status_code, [201, 400, 409, 500], f"Unexpected status code: {response.status_code}"
+            )
             self.fail(f"Unexpected status code: {response.status_code} with message {response.text}")
 
     def test_US2H(self):
@@ -232,9 +234,13 @@ class Testing(unittest.TestCase):
             }
 
             # Assert that the response JSON matches the expected response
-            self.assertEqual(response.json(), expected_response, "Response JSON does not match the expected output.")
+            self.assertEqual(
+                response.json(), expected_response, "Response JSON does not match the expected output."
+            )
         else:
-            self.assertIn(response.status_code, [200, 400, 401, 404], f"Unexpected status code: {response.status_code}")
+            self.assertIn(
+                response.status_code, [200, 400, 401, 404], f"Unexpected status code: {response.status_code}"
+            )
             self.fail(f"Unexpected status code: {response.status_code} with message {response.text}")
 
     def test_US4U1(self):
@@ -246,9 +252,13 @@ class Testing(unittest.TestCase):
 
         if response.status_code == 404:
             json_response = response.json()
-            self.assertEqual(json_response["error"], "Song not recognised by AudD.io.")
+            self.assertEqual(
+                json_response["error"], "Song not recognised by AudD.io."
+            )
         else:
-            self.assertIn(response.status_code, [200, 400, 401, 404], f"Unexpected status code: {response.status_code}")
+            self.assertIn(
+                response.status_code, [200, 400, 401, 404], f"Unexpected status code: {response.status_code}"
+            )
             self.fail(f"Unexpected status code: {response.status_code} with message {response.text}")
 
     def test_US4U2(self):
@@ -260,9 +270,13 @@ class Testing(unittest.TestCase):
 
         if response.status_code == 400:
             json_response = response.json()
-            self.assertEqual(json_response["error"], "File does not exist or is inaccessible")
+            self.assertEqual(
+                json_response["error"], "File does not exist or is inaccessible"
+            )
         else:
-            self.assertIn(response.status_code, [200, 400, 401, 404], f"Unexpected status code: {response.status_code}")
+            self.assertIn(
+                response.status_code, [200, 400, 401, 404], f"Unexpected status code: {response.status_code}"
+            )
             self.fail(f"Unexpected status code: {response.status_code} with message {response.text}")
 
     def test_US4U3(self):
@@ -276,7 +290,9 @@ class Testing(unittest.TestCase):
             json_response = response.json()
             self.assertEqual(json_response["error"], "file_path is required")
         else:
-            self.assertIn(response.status_code, [200, 400, 401, 404], f"Unexpected status code: {response.status_code}")
+            self.assertIn(
+                response.status_code, [200, 400, 401, 404], f"Unexpected status code: {response.status_code}"
+            )
             self.fail(f"Unexpected status code: {response.status_code} with message {response.text}")
 
 

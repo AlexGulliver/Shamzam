@@ -24,14 +24,13 @@ def add_track():
         return jsonify({"message": "Bad Request. 'filepath' is required."}), 400
 
     existing_track = database.db.lookup(trackname)
-    if existing_track is not None: 
+    if existing_track is not None:
         return jsonify({"message": "Track already present in database."}), 409
 
     if database.db.insert(js):
         return jsonify({"message": "Track added successfully!"}), 201
     else:
         return jsonify({"message": "Track insertion failed."}), 500
-
 
 
 @app.route("/tracks", methods=["DELETE"])
