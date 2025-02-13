@@ -1,7 +1,7 @@
 # Shamzam
 A Shazam-like MVP for the ECM3408 Coursework Assignment
 
-Uses a RESTful API built with Python and Flask to enable administrators to add, remove, and list music in an SQLite3 database.
+Uses a RESTful API built with Python and Flask to enable administrators to add, remove, list and identify music in an SQLite3 database.
 
 ## Installation
 
@@ -13,7 +13,7 @@ Uses a RESTful API built with Python and Flask to enable administrators to add, 
 
 3. If you have cloned from this repo you will need to create a .env file in the root of the directory and add the following inside
 
-`AUDD_KEY="{YOUR_AUDD.IO_API_KEY}"
+`AUDD_KEY="{YOUR_AUDD.IO_API_KEY}`
 
 ## Usage
 Run the tracks.py script:

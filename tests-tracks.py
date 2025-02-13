@@ -224,7 +224,7 @@ class Testing(unittest.TestCase):
 
         fragment_filepath = "./songs/~Blinding Lights.wav"
 
-        payload = {"file_path": fragment_filepath}
+        payload = {"filepath": fragment_filepath}
         response = requests.post(identify, json=payload, headers={"Content-Type": "application/json"})
         if response.status_code == 200:
             # Expected response
@@ -247,7 +247,7 @@ class Testing(unittest.TestCase):
         # User Story 4 Unhappy Path 1: song is not recognised by AudD.io
         filepath = "./songs/~Davos.wav"
 
-        payload = {"file_path": filepath}
+        payload = {"filepath": filepath}
         response = requests.post(identify, json=payload, headers={"Content-Type": "application/json"})
 
         if response.status_code == 404:
@@ -265,7 +265,7 @@ class Testing(unittest.TestCase):
         # User Story 4 Unhappy Path 2: invalid file path
         filepath = "invalid_file_path"
 
-        payload = {"file_path": filepath}
+        payload = {"filepath": filepath}
         response = requests.post(identify, json=payload, headers={"Content-Type": "application/json"})
 
         if response.status_code == 400:
@@ -283,12 +283,12 @@ class Testing(unittest.TestCase):
         # User Story 4 Unhappy Path: no file path provided
         filepath = ""
 
-        payload = {"file_path": filepath}
+        payload = {"filepath": filepath}
         response = requests.post(identify, json=payload, headers={"Content-Type": "application/json"})
 
         if response.status_code == 400:
             json_response = response.json()
-            self.assertEqual(json_response["error"], "file_path is required")
+            self.assertEqual(json_response["error"], "filepath is required")
         else:
             self.assertIn(
                 response.status_code, [200, 400, 401, 404], f"Unexpected status code: {response.status_code}"

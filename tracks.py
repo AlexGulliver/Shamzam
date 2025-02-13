@@ -74,8 +74,8 @@ def get_tracks():
         else:
             return jsonify({"message": "No tracks found."}), 404
 
-    except Exception as e:
-        return jsonify({"message": f"Internal Server Error: {str(e)}"}), 500
+    except:
+        return jsonify({"message": "Server error"}), 500
 
 
 @app.route('/identify', methods=['POST'])
@@ -88,14 +88,14 @@ def identify_song():
     if not api_token:
         return {"error": "Missing API key"}, 401
 
-    file_path = request.json.get("file_path")
-    if not file_path:
-        return jsonify({"error": "file_path is required"}), 400
+    filepath = request.json.get("filepath")
+    if not filepath:
+        return jsonify({"error": "filepath is required"}), 400
 
-    if not os.path.isfile(file_path):
+    if not os.path.isfile(filepath):
         return jsonify({"error": "File does not exist or is inaccessible"}), 400
 
-    files = {'file': open(file_path, 'rb')}
+    files = {'file': open(filepath, 'rb')}
     data = {'api_token': api_token, 'return': 'title'}
 
     response = requests.post('https://api.audd.io/', files=files, data=data)
